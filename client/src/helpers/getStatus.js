@@ -1,4 +1,4 @@
-const STATUS = {
+export const STATUSES = {
   running: 'running',
   failed: 'failed',
   successed: 'successed'
@@ -7,7 +7,7 @@ const STATUS = {
 const compare = (status) => (j) => j.status === status;
 
 export default function getStatus(jobs) {
-  const { running, failed, successed } = STATUS;
+  const { running, failed, successed } = STATUSES;
   
   if(jobs.some(compare(running))) {
     return running;

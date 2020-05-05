@@ -16,8 +16,8 @@ import { setIsLoading } from 'features/loader/loaderSlice';
 import { resetSortedBy } from 'features/sortedBy/sortedBySlice';
 
 function extendProcess(p) {
-  p.totalJobs = p.jobs?.length;
-  p.status = getStatus(p.jobs);
+  p.totalJobs = p?.jobs?.length;
+  p.status = getStatus(p?.jobs);
   return p;
 }
 

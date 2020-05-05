@@ -1,19 +1,19 @@
 import { configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import {reducer as toastrReducer} from 'react-redux-toastr'
+import { reducer as toastrReducer } from 'react-redux-toastr'
 
-import loaderReducer from 'features/loader/loaderSlice';
+import processesReducer from 'features/processes/processesSlice';
 import sortedByReducer from 'features/sortedBy/sortedBySlice';
 import searchReducer from 'features/search/searchSlice';
-import processesReducer from 'features/processes/processesSlice';
+import loaderReducer from 'features/loader/loaderSlice';
 import rootSaga from 'sagas/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
-  isLoading: loaderReducer,
   processes: processesReducer,
   sortedBy: sortedByReducer,
+  isLoading: loaderReducer,
   search: searchReducer,
   toastr: toastrReducer
 });

@@ -1,4 +1,5 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
+
 import { selectJobs } from 'features/processes/processesSlice';
 
 export const searchSlice = createSlice({
@@ -6,7 +7,7 @@ export const searchSlice = createSlice({
   initialState: '',
   reducers: {
     setSearchQuery: (state, action) => state = action.payload,
-    resetSearchQuery: state => ' '
+    resetSearchQuery: state => ''
   }
 });
 

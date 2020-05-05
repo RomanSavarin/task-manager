@@ -1,5 +1,7 @@
 import { nanoid } from '@reduxjs/toolkit';
 
+import { STATUSES } from './getStatus';
+
 function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -14,7 +16,7 @@ function generateJobMock(processId) {
     id,
     name: `Jobs ${id}`,
     processId: processId,
-    status: ['running', 'successed', 'failed'][getRandomInteger(0,2)]
+    status: Object.values(STATUSES)[getRandomInteger(0,2)]
   }
 };
 

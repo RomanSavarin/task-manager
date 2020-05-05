@@ -30,4 +30,5 @@ export default function JobsTable({ jobs, nested = true }) {
 
 JobsTable.propTypes = {
   jobs: PropTypes.arrayOf(jobsShape),
+  nested: PropTypes.bool,
 };

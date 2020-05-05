@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TiArrowSortedDown } from 'react-icons/ti';
 import styled from 'styled-components';
 
+import { colors } from 'styles/theme';
 import { Th } from 'components/Table';
+import { camalize } from 'helpers/utils';
 import { sortBy } from './processesSlice';
 import { selectSortedBy, setSortedBy } from 'features/sortedBy/sortedBySlice';
-import { camalize } from 'helpers/utils';
-import { colors } from 'styles/theme';
 
 const Arrow = styled(({ upward, ...rest }) => <TiArrowSortedDown {...rest} />)`
   transform: ${({ upward }) => (upward ? 'rotate(0)' : 'rotate(180deg)')};

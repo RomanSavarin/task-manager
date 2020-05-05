@@ -9,7 +9,7 @@ const mongoConnect = (callback) => {
       callback();
     })
     .catch((err) => {
-      console.error('DB connection faoled: ', err);
+      console.error('DB connection failed: ', err);
       throw err;
     })
 }

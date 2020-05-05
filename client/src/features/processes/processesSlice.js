@@ -24,8 +24,6 @@ export const processesSlice = createSlice({
   },
 });
 
-
-
 export const create = createAction('processes/create');
 export const fetch = createAction('processes/fetch');
 export const deleteProcess = createAction('processes/deleteProcess');
