@@ -1,6 +1,6 @@
 
 const baseUrlConfig = {
-  production: 'https://task-manager-pet.herokuapp.com/',
+  production: 'https://task-manager-pet.herokuapp.com/api/',
   development: 'http://localhost:4000/api/'
 };
 const currentEnv = process.env.REACT_APP_ENV || process.env.NODE_ENV;
