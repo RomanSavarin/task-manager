@@ -1,9 +1,10 @@
-import { call, put, all, takeLatest, takeEvery } from 'redux-saga/effects';
+import { call, put, all, select, takeLatest, takeEvery } from 'redux-saga/effects';
 
 import { get, post, remove  } from 'api';
 import handleError from 'helpers/handleError';
 import generateProcessMock from 'helpers/generateProcess';
 import getStatus from 'helpers/getStatus';
+import isNotYetExist from 'helpers/isNotYetExist';
 import { 
   fetch,
   create,
@@ -43,7 +44,8 @@ function* createProcessSaga() {
     yield put(setIsLoading(true));
     const newProcess = generateProcessMock();
     const process = yield call(post, 'processes', newProcess);
-    if(process?.data) {
+    const state = yield select();
+    if(process?.data && isNotYetExist(state, process?.data?.id)) {
       const processExtended = extendProcess(process.data);
       yield put(addProcess(processExtended));
       yield put(resetSortedBy());
@@ -60,7 +62,8 @@ function* deleteProcessSaga(action) {
   try {
     yield put(setIsLoading(true));
     const process = yield call(remove, `processes/${processId}`);
-    if(process?.status === 204) { //move 204 to constant
+    const state = yield select();
+    if(process?.status === 204 && !isNotYetExist(state, processId)) { //move 204 to constant
       yield put(removeProcess(processId));
     }
   } catch(error) {

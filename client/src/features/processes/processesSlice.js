@@ -30,6 +30,10 @@ export const deleteProcess = createAction('processes/deleteProcess');
 export const { addProcesses, addProcess, removeProcess, sortBy } = processesSlice.actions;
 
 export const selectProcesses = state => state.processes;
+export const selectProcessesId = createSelector(
+  selectProcesses,
+  processes => processes.map(p => p.id)
+);
 export const selectJobs = createSelector(
   selectProcesses,
   processes => processes.map(p => p.jobs).flat()
