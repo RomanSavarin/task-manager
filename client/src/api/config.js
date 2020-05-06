@@ -3,7 +3,7 @@ const baseUrlConfig = {
   development: 'http://localhost:4000/api/'
 };
 const wsUrlConfig = {
-  production: 'ws://task-manager-pet.herokuapp.com/',
+  production: 'wss://task-manager-pet.herokuapp.com/',
   development: 'ws://localhost:4000/'
 };
 const currentEnv = process.env.REACT_APP_ENV || process.env.NODE_ENV;
