@@ -2,8 +2,8 @@ import { call, put, all, select, takeLatest, takeEvery } from 'redux-saga/effect
 
 import { get, post, remove  } from 'api';
 import handleError from 'helpers/handleError';
+import extendProcess from 'helpers/extendProcess';
 import generateProcessMock from 'helpers/generateProcess';
-import getStatus from 'helpers/getStatus';
 import isNotYetExist from 'helpers/isNotYetExist';
 import { 
   fetch,
@@ -15,12 +15,6 @@ import {
 } from 'features/processes/processesSlice';
 import { setIsLoading } from 'features/loader/loaderSlice';
 import { resetSortedBy } from 'features/sortedBy/sortedBySlice';
-
-function extendProcess(p) {
-  p.totalJobs = p?.jobs?.length;
-  p.status = getStatus(p?.jobs);
-  return p;
-}
 
 //TODO Create withLoader HOF
 function* fetchProcessesSaga() {

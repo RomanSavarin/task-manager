@@ -1,7 +1,8 @@
-import { addProcess, removeProcess, selectProcessesId } from 'features/processes/processesSlice';
+import { addProcess, removeProcess } from 'features/processes/processesSlice';
 import { resetSortedBy } from 'features/sortedBy/sortedBySlice';
 import { wsUrl } from 'api/config';
 import isNotYetExist from 'helpers/isNotYetExist';
+import extendProcess from 'helpers/extendProcess';
 
 
 export default function WS(store) {
@@ -33,7 +34,8 @@ export default function WS(store) {
       switch (action) {
         case addProcess.toString():
           if(isNotYetExist(state, payload.id)) {
-            store.dispatch(addProcess(payload));
+            const processExtended = extendProcess(payload);
+            store.dispatch(addProcess(processExtended));
             store.dispatch(resetSortedBy());
           }
           break;
