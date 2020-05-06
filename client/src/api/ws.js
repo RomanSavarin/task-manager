@@ -6,7 +6,6 @@ import extendProcess from 'helpers/extendProcess';
 
 
 export default function WS(store) {
-  const state = store.getState();
   const socket = new WebSocket(wsUrl);
 
   socket.onopen = () => {
@@ -33,14 +32,14 @@ export default function WS(store) {
       if(!action || !payload)  return;
       switch (action) {
         case addProcess.toString():
-          if(isNotYetExist(state, payload.id)) {
+          if(isNotYetExist(store.getState(), payload.id)) {
             const processExtended = extendProcess(payload);
             store.dispatch(addProcess(processExtended));
             store.dispatch(resetSortedBy());
           }
           break;
         case removeProcess.toString():
-          if(!isNotYetExist(state, payload)) {
+          if(!isNotYetExist(store.getState(), payload)) {
             store.dispatch(removeProcess(payload));
           }
           break;
